@@ -1,0 +1,26 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: kinetix-api
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:sqlserver://localhost:1433;databaseName=kinetix;encrypt=true;trustServerCertificate=true}
+    username: ${SPRING_DATASOURCE_USERNAME:sa}
+    password: ${SPRING_DATASOURCE_PASSWORD:Kinetix@12345}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+        format_sql: true
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+kinetix:
+  security:
+    jwt-secret: ${JWT_SECRET:troque-este-segredo-em-producao-com-no-minimo-32-caracteres}

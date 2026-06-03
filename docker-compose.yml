@@ -1,0 +1,53 @@
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: kinetix-sqlserver
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "Kinetix@12345"
+      MSSQL_PID: "Developer"
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver-data:/var/opt/mssql
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P Kinetix@12345 -C -Q 'SELECT 1' || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+  sqlserver-init:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: kinetix-sqlserver-init
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+    volumes:
+      - ./database/sqlserver:/scripts
+    command: >
+      /bin/bash -c "/opt/mssql-tools18/bin/sqlcmd
+      -S sqlserver
+      -U sa
+      -P Kinetix@12345
+      -C
+      -i /scripts/001_create_schema.sql"
+    restart: "no"
+
+  backend:
+    build:
+      context: ./backend
+    container_name: kinetix-backend
+    depends_on:
+      sqlserver-init:
+        condition: service_completed_successfully
+    environment:
+      SPRING_DATASOURCE_URL: "jdbc:sqlserver://sqlserver:1433;databaseName=kinetix;encrypt=true;trustServerCertificate=true"
+      SPRING_DATASOURCE_USERNAME: "sa"
+      SPRING_DATASOURCE_PASSWORD: "Kinetix@12345"
+      JWT_SECRET: "troque-este-segredo-em-producao-com-no-minimo-32-caracteres"
+    ports:
+      - "8080:8080"
+
+volumes:
+  sqlserver-data:
