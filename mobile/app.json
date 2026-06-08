@@ -1,0 +1,12 @@
+{
+  "expo": {
+    "name": "KINETIX",
+    "slug": "kinetix-mobile",
+    "scheme": "kinetix",
+    "plugins": ["expo-router"],
+    "web": {
+      "bundler": "metro"
+    }
+  }
+}
+
