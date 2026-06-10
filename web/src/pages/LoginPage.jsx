@@ -1,3 +1,4 @@
+import React from "react";
 import { LogIn } from "lucide-react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -20,7 +21,12 @@ export default function LoginPage() {
       await login(form);
       navigate("/dashboard");
     } catch (err) {
-      setError(err.response?.data?.message ?? "Nao foi possivel autenticar.");
+      setError(
+        err.response?.data?.message ??
+          err.response?.data?.details?.[0] ??
+          err.message ??
+          "Nao foi possivel autenticar."
+      );
     } finally {
       setLoading(false);
     }

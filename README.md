@@ -73,6 +73,15 @@ Exemplo de login:
 }
 ```
 
+Login inicial criado automaticamente:
+
+```json
+{
+  "email": "admin@kinetix.com",
+  "senha": "Admin@123"
+}
+```
+
 Retorno do login:
 
 ```json

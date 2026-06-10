@@ -1,3 +1,4 @@
+import React from "react";
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { api, setAuthToken } from "../api/client.js";
 
@@ -6,8 +7,13 @@ const STORAGE_KEY = "kinetix.session";
 
 export function AuthProvider({ children }) {
   const [session, setSession] = useState(() => {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    return stored ? JSON.parse(stored) : null;
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      return stored ? JSON.parse(stored) : null;
+    } catch {
+      localStorage.removeItem(STORAGE_KEY);
+      return null;
+    }
   });
 
   useEffect(() => {
