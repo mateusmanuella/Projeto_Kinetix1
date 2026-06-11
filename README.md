@@ -1,5 +1,6 @@
 # KINETIX
 
+<<<<<<< HEAD
 Plataforma phygital para reabilitacao fisioterapeutica assistida por tecnologia.
 
 Slogan: Movimento inteligente para uma recuperacao eficiente.
@@ -122,3 +123,19 @@ npm start
 ```
 
 Observacao: no mobile, ajuste `extra.apiUrl` em `mobile/app.json` para o IP da sua maquina quando testar em celular fisico.
+=======
+Projeto HealthTech para apoio a fisioterapeutas e pacientes, alinhado à ODS 3.
+
+## Estrutura inicial
+
+- `docs/` documentação do projeto
+- `sprints/` planejamento detalhado por sprint
+- `backend/` futura API Spring Boot
+- `frontend/` futuro painel web
+- `mobile/` futuro app React Native
+
+## Sprint atual
+
+Veja o planejamento em `sprints/`.
+
+>>>>>>> d0316cb1ebb3874698ebce1879bbfa6a937f9bbd
