@@ -26,7 +26,7 @@ export function AuthProvider({ children }) {
   }, [session]);
 
   async function login(payload) {
-    const { data } = await api.post("/api/auth/login", payload);
+    const { data } = await api.post("/auth/login", payload);
     setSession(data);
     return data;
   }
