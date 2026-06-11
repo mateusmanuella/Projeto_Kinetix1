@@ -2,7 +2,6 @@
   "expo": {
     "name": "KINETIX",
     "slug": "kinetix-mobile",
-<<<<<<< HEAD
     "version": "0.0.1",
     "orientation": "portrait",
     "scheme": "kinetix",
@@ -13,13 +12,3 @@
     }
   }
 }
-=======
-    "scheme": "kinetix",
-    "plugins": ["expo-router"],
-    "web": {
-      "bundler": "metro"
-    }
-  }
-}
-
->>>>>>> d0316cb1ebb3874698ebce1879bbfa6a937f9bbd
