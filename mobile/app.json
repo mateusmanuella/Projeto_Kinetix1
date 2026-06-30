@@ -2,11 +2,13 @@
   "expo": {
     "name": "KINETIX",
     "slug": "kinetix-mobile",
+    "version": "0.0.1",
+    "orientation": "portrait",
     "scheme": "kinetix",
-    "plugins": ["expo-router"],
-    "web": {
-      "bundler": "metro"
+    "userInterfaceStyle": "light",
+    "plugins": ["expo-router", "expo-secure-store"],
+    "extra": {
+      "apiUrl": "http://localhost:8080"
     }
   }
 }
-
