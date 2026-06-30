@@ -30,7 +30,7 @@ O build final fica em `dist/`.
 
 - Base directory: `frontend`
 - Build command: `npm run build`
-- Publish directory: `frontend/dist`
+- Publish directory: `dist`
 
 ### Hospedagem estatica
 

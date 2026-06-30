@@ -34,7 +34,7 @@ O login retorna:
 
 ## Web
 
-Implementado em `web/`:
+Implementado em `frontend/`:
 
 - Login.
 - Cadastro por perfil.
